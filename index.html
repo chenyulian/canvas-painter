@@ -14,15 +14,23 @@
     canvas.width = document.documentElement.clientWidth;
     
     var ctx = canvas.getContext("2d");
+    let isDrawing = false;
 
-    canvas.onclick = (e)=>{
-        console.log(e)
-        ctx.fillStyle = "orange";
-        ctx.fillRect(e.clientX - 2, e.clientY - 2, 4, 4);
+    canvas.onmousemove = (e)=>{
+        if (isDrawing) {
+            ctx.fillStyle = "orange";
+            ctx.fillRect(e.clientX - 2, e.clientY - 2, 4, 4);
+        }
+        
     }
 
-      
-    
+    canvas.onmouseup = ()=>{
+        isDrawing = false;
+    }
+
+    canvas.onmousedown = ()=>{
+        isDrawing = true;
+    }
 </script>
 </body>
 </html>
