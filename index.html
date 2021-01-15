@@ -14,23 +14,35 @@
     canvas.width = document.documentElement.clientWidth;
     
     var ctx = canvas.getContext("2d");
+    //ctx.strokeStyle = "orange";
+    ctx.lineWidth = 4;
+    ctx.lineCap = "round"; 
     let isDrawing = false;
+    let last;
 
     canvas.onmousemove = (e)=>{
         if (isDrawing) {
-            ctx.fillStyle = "orange";
-            ctx.fillRect(e.clientX - 2, e.clientY - 2, 4, 4);
+            drawLine(last[0], last[1], e.clientX, e.clientY);
+            last = [e.clientX, e.clientY];
         }
-        
     }
 
     canvas.onmouseup = ()=>{
         isDrawing = false;
     }
 
-    canvas.onmousedown = ()=>{
+    canvas.onmousedown = (e)=>{
         isDrawing = true;
+        last = [e.clientX, e.clientY];
     }
+
+    function drawLine(x1, y1, x2, y2) {
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+    }
+    
 </script>
 </body>
 </html>
