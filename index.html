@@ -4,61 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>画板</title>
+    <title>Drawing</title>
   </head>
   <body>
     <canvas id="canvas"></canvas>
-    <script>
-      var canvas = document.getElementById("canvas");
-      canvas.height = document.documentElement.clientHeight;
-      canvas.width = document.documentElement.clientWidth;
-
-      let isMobile = "ontouchstart" in document.documentElement;
-
-      var ctx = canvas.getContext("2d");
-      //ctx.strokeStyle = "orange";
-      ctx.lineWidth = 4;
-      ctx.lineCap = "round";
-      let isDrawing = false;
-      let last;
-
-      if (isMobile) {
-        canvas.ontouchstart = (e) => {
-          last = [e.touches[0].clientX, e.touches[0].clientY];
-        };
-        canvas.ontouchmove = (e) => {
-          drawLine(
-            last[0],
-            last[1],
-            e.touches[0].clientX,
-            e.touches[0].clientY
-          );
-          last = [e.touches[0].clientX, e.touches[0].clientY];
-        };
-      } else {
-        canvas.onmousemove = (e) => {
-          if (isDrawing) {
-            drawLine(last[0], last[1], e.clientX, e.clientY);
-            last = [e.clientX, e.clientY];
-          }
-        };
-
-        canvas.onmouseup = () => {
-          isDrawing = false;
-        };
-
-        canvas.onmousedown = (e) => {
-          isDrawing = true;
-          last = [e.clientX, e.clientY];
-        };
-      }
-
-      function drawLine(x1, y1, x2, y2) {
-        ctx.beginPath();
-        ctx.moveTo(x1, y1);
-        ctx.lineTo(x2, y2);
-        ctx.stroke();
-      }
-    </script>
+    <script src="./index.js"></script>
   </body>
 </html>
