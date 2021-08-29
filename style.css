@@ -8,4 +8,17 @@
 canvas {
     display: block;
     touch-action: none;
+    cursor: url("./assets/pencil.svg") 0 24,url("./assets/pencil.svg"),auto ;
+}
+
+img {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    opacity: .3;
+}
+
+img:hover {
+    cursor: pointer;
+    opacity: .5;
 }

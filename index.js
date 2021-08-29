@@ -1,4 +1,5 @@
 let canvas = document.getElementById("canvas");
+let clearBtn = document.querySelector("#clearBtn");
 canvas.height = document.documentElement.clientHeight;
 canvas.width = document.documentElement.clientWidth;
 
@@ -21,7 +22,6 @@ if (isMobile) {
   };
 } else {
   canvas.onpointermove = (e) => {
-    console.log(e.pressure);
     ctx.lineWidth = getLineWidth(e);
     if (isDrawing) {
       drawLine(last[0], last[1], e.clientX, e.clientY);
@@ -30,16 +30,19 @@ if (isMobile) {
   };
 
   canvas.onpointerdown = (e) => {
-    console.log("down");
     isDrawing = true;
     last = [e.clientX, e.clientY];
   };
 
   canvas.onpointerup = () => {
-    console.log("up");
     isDrawing = false;
   };
 }
+
+// 清空画布
+clearBtn.addEventListener("click", () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+});
 
 function drawLine(x1, y1, x2, y2) {
   ctx.beginPath();
