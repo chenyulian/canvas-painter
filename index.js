@@ -6,7 +6,7 @@ let isMobile = "ontouchstart" in document.documentElement;
 
 let ctx = canvas.getContext("2d");
 //ctx.strokeStyle = "orange";
-ctx.lineWidth = 10;
+ctx.lineWidth = 4;
 ctx.lineCap = "round";
 let isDrawing = false;
 let last;
@@ -21,7 +21,8 @@ if (isMobile) {
   };
 } else {
   canvas.onpointermove = (e) => {
-    console.log("move");
+    console.log(e.pressure);
+    ctx.lineWidth = getLineWidth(e);
     if (isDrawing) {
       drawLine(last[0], last[1], e.clientX, e.clientY);
       last = [e.clientX, e.clientY];
