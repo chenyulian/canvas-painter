@@ -29,7 +29,7 @@ let isMobile = "ontouchstart" in document.documentElement;
 let ctx = canvas.getContext("2d");
 ctx.lineWidth = 4;
 ctx.lineCap = "round";
-ctx.strokeStyle = "#1abc9c";
+ctx.strokeStyle = "#f52443";
 let isDrawing = false;
 let last;
 
