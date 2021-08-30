@@ -22,3 +22,28 @@ img:hover {
     cursor: pointer;
     opacity: .5;
 }
+
+#colorList {
+    position: absolute;
+    left: 50px;
+    bottom: 30px;
+    display: flex;
+    align-items: center;   
+}
+
+#colorList > li {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    list-style: none;
+    margin-right: 4px;
+}
+
+#colorList > li:hover {
+    cursor: pointer;
+}
+
+#colorList > li.selected {
+    width: 30px;
+    height: 30px;
+}
