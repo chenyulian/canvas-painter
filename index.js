@@ -66,11 +66,13 @@ clearBtn.addEventListener("click", () => {
 });
 // 改变画笔颜色
 colorList.addEventListener("click", (e) => {
-  const prev = document.querySelector("#colorList>li.selected");
-  prev.classList.remove("selected");
-  const selected = e.target;
-  selected.classList.add("selected");
-  ctx.strokeStyle = selected.style.background;
+  if (e.target instanceof HTMLLIElement) {
+    const prev = document.querySelector("#colorList>li.selected");
+    prev.classList.remove("selected");
+    const selected = e.target;
+    selected.classList.add("selected");
+    ctx.strokeStyle = selected.style.background;
+  }
 });
 
 function drawLine(x1, y1, x2, y2) {
